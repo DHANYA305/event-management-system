@@ -3,7 +3,9 @@ const cors = require("cors");
 const fs = require("fs");
 
 const app = express();
-const PORT = 5002;
+const PORT = process.env.PORT || 5002;
+app.listen(PORT, () => console.log("Server running on", PORT));
+
 
 app.use(cors());
 app.use(express.json());
