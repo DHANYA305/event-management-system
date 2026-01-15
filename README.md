@@ -1,32 +1,54 @@
-# Client Dashboard Backend (SuPrathon 2K25 Project)
 
-This is the backend server for the **Client Dashboard for IT Companies** project, developed for SuPrathon 2K25. It handles all event-related operations such as submission, approval, and status tracking by clients, admins, and providers.
 
-## 🔗 Live Backend
+## Client Dashboard – Event Approval System
 
-🌐 [Render Live Link](https://backend-hackathon-dtqd.onrender.com/)  
-_(Shows “Backend is running” when server is active)_
+A full-stack web application that manages event submissions through a structured approval workflow.
+Events submitted by providers are reviewed by an admin and only approved events are visible to clients.
 
-## 📁 Features
+---
 
-- POST new event requests (Clients & Providers)
-- GET all event listings for Admin approval
-- PATCH event status (approve/reject)
-- DELETE all events (Admin cleanup)
-- Auto-expiry logic (on frontend side) to hide past events
+## Features
 
-## 🛠️ Tech Stack
+* Provider can submit events (pending state)
+* Admin can approve or reject events
+* Clients can view **approved upcoming events only**
+* Search and date-based filtering
+* Persistent server-side storage
 
-- Node.js
-- Express.js
-- JSON File Storage (data.json)
-- Render (Deployment)
+---
 
-## 📁 Folder Structure
-backend-hackathon/
-├── server.js
-├── data.json
-├── package.json
-├── package-lock.json
-└── README.md
+## Tech Stack
+
+* Frontend: HTML, CSS, JavaScript
+* Backend: Node.js, Express
+* Storage: JSON-based datastore
+* Deployment: Render (optional)
+
+---
+
+## Application Flow
+
+```
+Provider submits event
+        ↓
+Event stored as "pending"
+        ↓
+Admin reviews & approves/rejects
+        ↓
+Approved events shown to clients
+```
+
+---
+
+## How to Run Locally
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start server: `node server.js`
+4. Open: `http://localhost:5002/admin.html`
+
+---
+
+## Hackathon Context
+This project was originally developed during a hackathon and later refactored into a stable full-stack application for internship and learning purposes.
 
