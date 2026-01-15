@@ -3,12 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Client Dashboard</title>
+  <title>Event Management System</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gradient-to-r from-purple-100 via-blue-100 to-pink-100 min-h-screen font-sans">
 
-  <header class="text-center py-8">
+  <!-- 🔝 NAV / ROLE SELECTION -->
+  <nav class="flex justify-center gap-6 py-6">
+    <button onclick="location.href='provider.html'"
+      class="px-5 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+      Provider
+    </button>
+
+    <button onclick="location.href='admin.html'"
+      class="px-5 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition">
+      Admin
+    </button>
+
+    <button onclick="location.href='clients.html'"
+      class="px-5 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition">
+      Client
+    </button>
+  </nav>
+
+  <!-- 📚 CLIENT DASHBOARD -->
+  <header class="text-center py-6">
     <h1 class="text-4xl font-bold text-gray-800 mb-4">📚 Upcoming Events</h1>
     <input
       type="text"
@@ -19,7 +39,7 @@
   </header>
 
   <section id="events-container" class="max-w-4xl mx-auto px-4 py-6 space-y-4">
-    <!-- Event cards will be injected here -->
+    <!-- Event cards injected by script.js -->
   </section>
 
   <script src="script.js"></script>
