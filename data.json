@@ -1,12 +1,73 @@
 {
   "events": [
     {
-      "title": "Mastering Git & GitHub for Team Collaboration",
-      "provider": "TechBridge Academy",
-      "date": "2025-07-26",
-      "type": "Webinar",
-      "desc": "Join our expert-led webinar to learn Git and GitHub workflows used in real-world teams. Perfect for developers, interns, and freshers looking to boost their version control skills. Includes live demo and Q&A.",
+      "title": "⚡ TechNova",
+      "description": "A dynamic convergence of minds where cutting-edge tech meets bold ideas. From AI breakthroughs to sustainable solutions, this is where tomorrow gets built today.",
       "status": "approved"
+    },
+    {
+      "title": "AI Bootcamp",
+      "description": "Introduction to ML",
+      "status": "approved"
+    },
+    {
+      "title": "Old Seminar",
+      "description": "Already happened!",
+      "status": "approved",
+      "date": "2024-07-01"
+    },
+    {
+      "title": "🔒 CyberPulse",
+      "description": "Where cybersecurity meets adrenaline—tackle data threats, encryption puzzles, and digital ethics in a high-stakes arena of protection and privacy.",
+      "status": "rejected",
+      "date": "2025-07-31"
+    },
+    {
+      "title": "🌐 CodeVerse",
+      "description": "A universe for coders, creators, and tech dreamers to share, learn, and shape the digital realm. Dive into workshops, challenges, and mind-bending hacks.",
+      "status": "rejected",
+      "date": "2025-06-01"
+    },
+    {
+      "title": "💡 InnoSphere",
+      "description": "Bubbling with startup energy and futuristic pitches, InnoSphere is where fresh ideas orbit breakthrough potential. Think Shark Tank, but cosmic.",
+      "status": "rejected",
+      "date": "2025-07-30"
+    },
+    {
+      "title": "📡 TechTide",
+      "description": "A wave of trends, talks, and tech demos sweeping through industries—from smart cities to wearables. Ride the tide of transformation.",
+      "status": "pending",
+      "date": "2025-08-16",
+      "contact": "arjunkumar678@gmail.com"
+    },
+    {
+      "title": "CPP",
+      "description": "A training program to educate students about the current market trends  and placement drive process ",
+      "status": "approved",
+      "date": "2026-01-30",
+      "contact": "9963420591"
+    },
+    {
+      "title": "DAA",
+      "description": "mini assesment",
+      "status": "approved",
+      "date": "2026-02-06",
+      "contact": "sjoshi@gmail.com"
+    },
+    {
+      "title": "Google cloud platform",
+      "description": "10hr course that introduces students to cloud computing and google cloud services",
+      "status": "pending",
+      "date": "2026-02-26",
+      "contact": "Google"
+    },
+    {
+      "title": "THE FRONTEND MASTER",
+      "description": "A brief intro to students on the current tech stack used for the front end development",
+      "status": "pending",
+      "date": "2026-03-05",
+      "contact": "10 seconds"
     }
   ]
 }
