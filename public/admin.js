@@ -1,100 +1,111 @@
-fetch("https://event-management-system-xo60.onrender.com/events")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("admin-container");
-    container.innerHTML = "";
+// 🔐 Protect admin page
+if (!localStorage.getItem("isAdmin")) {
+  window.location.href = "login.html";
+}
 
-    if (!data.events || data.events.length === 0) {
-      container.innerHTML = "<p>No events found 🎉</p>";
-      return;
-    }
+// 🚀 Load events
+function loadEvents() {
+  fetch("http://localhost:5003/events")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("admin-container");
+      container.innerHTML = "";
 
-    data.events.forEach(event => {
-      const card = document.createElement("div");
-      card.className = "bg-white p-4 rounded shadow";
+      if (!data.events || data.events.length === 0) {
+        container.innerHTML = "<p>No events found 🎉</p>";
+        return;
+      }
 
-     const isFinal = event.status !== "pending";
+      data.events.forEach(event => {
+        const card = document.createElement("div");
+        card.className = "bg-white p-4 rounded shadow";
 
-card.innerHTML = `
-  <h3 class="font-bold">${event.title}</h3>
-  <p>${event.description || "No description"}</p>
+        const isFinal = event.status !== "pending";
 
-  <span class="px-2 py-1 rounded text-white ${
-    event.status === "approved" ? "bg-green-500" :
-    event.status === "rejected" ? "bg-red-500" :
-    "bg-yellow-500"
-  }">
-    ${event.status.toUpperCase()}
-  </span>
+        card.innerHTML = `
+          <h3 class="font-bold">${event.title}</h3>
+          <p>${event.description || "No description"}</p>
 
-  <br/><br/>
+          <span class="px-2 py-1 rounded text-white ${
+            event.status === "approved" ? "bg-green-500" :
+            event.status === "rejected" ? "bg-red-500" :
+            "bg-yellow-500"
+          }">
+            ${event.status.toUpperCase()}
+          </span>
 
-  <button onclick="approveEvent('${event.title}')"
-    ${isFinal ? "disabled" : ""}
-    class="px-3 py-1 bg-green-600 text-white rounded disabled:opacity-50">
-    ✅ Approve
-  </button>
+          <br/><br/>
 
-  <button onclick="rejectEvent('${event.title}')"
-    ${isFinal ? "disabled" : ""}
-    class="px-3 py-1 bg-red-600 text-white rounded disabled:opacity-50">
-    ❌ Reject
-  </button>
-`;
+          <button onclick="approveEvent('${event._id}')"
+            ${isFinal ? "disabled" : ""}
+            class="px-3 py-1 bg-green-600 text-white rounded disabled:opacity-50">
+            ✅ Approve
+          </button>
 
+          <button onclick="rejectEvent('${event._id}')"
+            ${isFinal ? "disabled" : ""}
+            class="px-3 py-1 bg-red-600 text-white rounded disabled:opacity-50">
+            ❌ Reject
+          </button>
+        `;
 
-      container.appendChild(card);
+        container.appendChild(card);
+      });
+    })
+    .catch(err => {
+      console.error("Error fetching events:", err);
+      document.getElementById("admin-container").innerHTML =
+        "<p style='color:red'>Failed to load events</p>";
     });
-  })
-  .catch(err => {
-    console.error("Error fetching events:", err);
-    document.getElementById("admin-container").innerHTML =
-      "<p style='color:red'>Failed to load events</p>";
-  });
-
-
-// 🚀 Step 2: Approve
-function approveEvent(title) {
- fetch(`https://event-management-system-xo60.onrender.com/approve/${encodeURIComponent(title)}`, {
-  method: "POST"
-})
-
-  .then(res => res.json())
-  .then(() => {
-    alert("Approved");
-    location.reload();
-  })
-  .catch(err => console.error("Error approving:", err));
 }
 
-
-// 🚀 Step 3: Reject
-function rejectEvent(title) {
-fetch(`https://event-management-system-xo60.onrender.com/reject/${encodeURIComponent(title)}`, {
-  method: "POST"
-})
-
-  .then(res => res.json())
-  .then(() => {
-    alert("Rejected");
-    location.reload();
+// 🚀 Approve
+function approveEvent(id) {
+  fetch(`http://localhost:5003/approve/${id}`, {
+    method: "POST"
   })
-  .catch(err => console.error("Error rejecting:", err));
+    .then(res => res.json())
+    .then(() => {
+      alert("Approved");
+      loadEvents(); // 🔥 refresh UI
+    })
+    .catch(err => console.error("Error approving:", err));
 }
 
+// 🚀 Reject
+function rejectEvent(id) {
+  fetch(`http://localhost:5003/reject/${id}`, {
+    method: "POST"
+  })
+    .then(res => res.json())
+    .then(() => {
+      alert("Rejected");
+      loadEvents(); // 🔥 refresh UI
+    })
+    .catch(err => console.error("Error rejecting:", err));
+}
 
-// 🚀 Step 4: Clear all events
+// 🚀 Clear all events
 function clearAllEvents() {
   if (!confirm("Are you sure you want to delete ALL events?")) return;
 
-  fetch("https://event-management-system-xo60.onrender.com/events", { method: "DELETE" })
+  fetch("http://localhost:5003/events", { method: "DELETE" })
     .then(res => res.json())
     .then(data => {
       alert(data.message);
-      location.reload();
+      loadEvents(); // 🔥 refresh UI
     })
     .catch(err => {
       console.error("Error clearing events:", err);
       alert("Failed to clear events.");
     });
 }
+
+// 🔐 Logout
+function logout() {
+  localStorage.removeItem("isAdmin");
+  window.location.href = "login.html";
+}
+
+// 🚀 Load on page start
+loadEvents();

@@ -14,7 +14,7 @@ form.addEventListener("submit", async (e) => {
 
   try {
     const response = await fetch(
-      "https://event-management-system-xo60.onrender.com/events",
+      "http://localhost:5003/events",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
