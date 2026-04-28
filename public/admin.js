@@ -5,7 +5,7 @@ if (!localStorage.getItem("isAdmin")) {
 
 // 🚀 Load events
 function loadEvents() {
-  fetch("http://localhost:5003/events")
+  fetch("https://event-management-system-xo60.onrender.com/events")
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById("admin-container");
@@ -61,7 +61,7 @@ function loadEvents() {
 
 // 🚀 Approve
 function approveEvent(id) {
-  fetch(`http://localhost:5003/approve/${id}`, {
+  fetch(`https://event-management-system-xo60.onrender.com/approve/${id}`, {
     method: "POST"
   })
     .then(res => res.json())
@@ -74,7 +74,7 @@ function approveEvent(id) {
 
 // 🚀 Reject
 function rejectEvent(id) {
-  fetch(`http://localhost:5003/reject/${id}`, {
+  fetch(`https://event-management-system-xo60.onrender.com/reject/${id}`, {
     method: "POST"
   })
     .then(res => res.json())
@@ -89,7 +89,7 @@ function rejectEvent(id) {
 function clearAllEvents() {
   if (!confirm("Are you sure you want to delete ALL events?")) return;
 
-  fetch("http://localhost:5003/events", { method: "DELETE" })
+  fetch("https://event-management-system-xo60.onrender.com/events", { method: "DELETE" })
     .then(res => res.json())
     .then(data => {
       alert(data.message);
