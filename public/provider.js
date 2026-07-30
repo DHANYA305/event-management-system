@@ -14,7 +14,7 @@ form.addEventListener("submit", async (e) => {
 
   try {
     const response = await fetch(
-      "http://localhost:5003/events",
+      "/events",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
