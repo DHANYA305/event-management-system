@@ -13,11 +13,17 @@ const PORT = process.env.PORT || 5003;
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
+console.log(process.env.MONGO_URI);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log(err));
+  .then(() => {
+    console.log("MongoDB Connected");
+  })
+  .catch((err) => {
+    console.error("MongoDB Error:");
+    console.error(err);
+  });
 
 // Health check
 app.get("/", (req, res) => {
@@ -55,36 +61,37 @@ app.get("/events", async (req, res) => {
 
 // POST new event
 app.post("/events", async (req, res) => {
-  console.log("POST /events hit");
-  console.log(req.body);   // ✅ HERE ONLY
+  try {
+    console.log("POST /events hit");
+    console.log(req.body);
 
-  const { title, description, status, date, contact } = req.body;
+    const { title, description, status, date, contact } = req.body;
 
-  if (!title || !description || !status || !date || !contact) {
-    return res.status(400).json({ message: "Missing fields" });
+    const duplicate = await Event.findOne({ title });
+
+    if (duplicate) {
+      return res.status(400).json({ message: "Title already exists" });
+    }
+
+    const newEvent = new Event({
+      title,
+      description,
+      status,
+      date,
+      contact,
+    });
+
+    await newEvent.save();
+
+    console.log("Saved to MongoDB");
+
+    res.json({ message: "Event submitted!" });
+
+  } catch (err) {
+    console.error("EVENT ERROR:");
+    console.error(err);
+    res.status(500).json({ message: err.message });
   }
-
-  const duplicate = await Event.findOne({
-    title: title.toLowerCase()
-  });
-
-  if (duplicate) {
-    return res.status(400).json({ message: "Title already exists" });
-  }
-
-  const newEvent = new Event({
-    title,
-    description,
-    status,
-    date,
-    contact
-  });
-
-  await newEvent.save();
-
-  console.log("Saved to MongoDB"); // optional debug
-
-  res.json({ message: "Event submitted!" });
 });
 
 // Approve event

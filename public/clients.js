@@ -12,7 +12,7 @@ document.getElementById("submit-btn").addEventListener("click", () => {
     return;
   }
 
-  fetch("https://event-management-system-xo60.onrender.com/events", {
+  fetch("/events", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -40,7 +40,7 @@ document.getElementById("submit-btn").addEventListener("click", () => {
 });
 
 function loadEvents() {
-  fetch("https://event-management-system-xo60.onrender.com/events")
+  fetch("/events")
     .then((res) => res.json())
     .then((data) => {
       const list = document.getElementById("status-list");

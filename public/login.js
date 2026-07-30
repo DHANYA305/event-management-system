@@ -10,7 +10,7 @@ form.addEventListener("submit", async (e) => {
   console.log("Login clicked"); // DEBUG
 
   try {
-    const res = await fetch("https://event-management-system-xo60.onrender.com/login", {
+    const res = await fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

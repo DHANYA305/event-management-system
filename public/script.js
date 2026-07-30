@@ -3,7 +3,7 @@ const searchInput = document.getElementById("search");
 
 async function loadApprovedEvents() {
   try {
-    const res = await fetch("https://event-management-system-xo60.onrender.com/events");
+    const res = await fetch("/events");
     const data = await res.json();
 
     const query = searchInput.value.toLowerCase();
