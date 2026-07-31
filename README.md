@@ -185,19 +185,19 @@ Displayed to Users
 
 ### Home Page
 
-![Home](assets/screenshots/home.png)
+![Home](assets/Screenshots/home.png)
 
 ### Provider Dashboard
 
-![Provider](assets/screenshots/provider.png)
+![Provider](assets/Screenshots/provider.png)
 
 ### Admin Dashboard
 
-![Admin](assets/screenshots/admin.png)
+![Admin](assets/Screenshots/admin.png)
 
 ### Approved Events
 
-![Approved Events](assets/screenshots/approved-events.png)
+![Approved Events](assets/Screenshots/approved-events.png)
 ## ✨ Future Enhancements
 
 - User authentication
