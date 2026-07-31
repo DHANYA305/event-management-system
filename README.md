@@ -1,54 +1,228 @@
+# 🎉 Event Management System
 
+A full-stack Event Management System that allows event providers to submit events, admins to approve or reject them, and users to browse approved events. The application is built using Node.js, Express.js, MongoDB Atlas, and deployed on Render.
 
-## Client Dashboard – Event Approval System
+## 🚀 Live Demo
 
-A full-stack web application that manages event submissions through a structured approval workflow.
-Events submitted by providers are reviewed by an admin and only approved events are visible to clients.
-
----
-
-## Features
-
-* Provider can submit events (pending state)
-* Admin can approve or reject events
-* Clients can view **approved upcoming events only**
-* Search and date-based filtering
-* Persistent server-side storage
+🌐 https://event-management-system-xo60.onrender.com
 
 ---
 
-## Tech Stack
+## 📌 Features
 
-* Frontend: HTML, CSS, JavaScript
-* Backend: Node.js, Express
-* Storage: JSON-based datastore
-* Deployment: Render (optional)
+### 👤 User
+- View approved events
+- Browse event details
+- Responsive interface
+
+### 📝 Event Provider
+- Submit new events
+- Fill event details including title, description, category, date, and contact
+- Events remain pending until approved
+
+### 🔐 Admin
+- Secure admin login
+- View all pending events
+- Approve or reject event requests
+- Manage event listings
 
 ---
 
-## Application Flow
+## 🛠️ Tech Stack
+
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
+
+### Backend
+- Node.js
+- Express.js
+
+### Database
+- MongoDB Atlas
+- Mongoose
+
+### Deployment
+- Render
+
+### Version Control
+- Git & GitHub
+
+---
+
+## 📂 Project Structure
 
 ```
-Provider submits event
-        ↓
-Event stored as "pending"
-        ↓
-Admin reviews & approves/rejects
-        ↓
-Approved events shown to clients
+event-management-system/
+│
+├── models/
+│   └── Event.js
+│
+├── public/
+│   ├── index.html
+│   ├── provider.html
+│   ├── admin.html
+│   ├── clients.html
+│   ├── css/
+│   ├── js/
+│
+├── server.js
+├── package.json
+├── .env.example
+└── README.md
 ```
 
 ---
 
-## How to Run Locally
+## ⚙️ Installation
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Start server: `node server.js`
-4. Open: `http://localhost:5002/admin.html`
+Clone the repository
+
+```bash
+git clone https://github.com/DHANYA305/event-management-system.git
+```
+
+Move into the project folder
+
+```bash
+cd event-management-system
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Create a `.env` file
+
+```env
+MONGO_URI=your_mongodb_connection_string
+PORT=5003
+```
+
+Start the server
+
+```bash
+npm start
+```
+
+Visit
+
+```
+http://localhost:5003
+```
 
 ---
 
-## Hackathon Context
-This project was originally developed during a hackathon and later refactored into a stable full-stack application for internship and learning purposes.
+## 🌍 Deployment
 
+The project is deployed on Render and uses MongoDB Atlas as the cloud database.
+
+---
+
+## 📸 Screenshots
+
+### Home Page
+
+(Add Screenshot)
+
+### Provider Dashboard
+
+(Add Screenshot)
+
+### Admin Dashboard
+
+(Add Screenshot)
+
+---
+
+## 🔄 Workflow
+
+```
+Provider
+     │
+     ▼
+Submit Event
+     │
+     ▼
+Node.js + Express API
+     │
+     ▼
+MongoDB Atlas
+     │
+     ▼
+Pending Events
+     │
+     ▼
+Admin Approval
+     │
+     ▼
+Approved Events
+     │
+     ▼
+Displayed to Users
+```
+
+---
+
+## 📦 API Endpoints
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | /events | Fetch approved events |
+| POST | /events | Submit a new event |
+| GET | /pending | Get pending events |
+| POST | /approve | Approve an event |
+| POST | /reject | Reject an event |
+| POST | /login | Admin login |
+
+---
+
+
+## 📸 Screenshots
+
+### Home Page
+
+![Home](assets/screenshots/home.png)
+
+### Provider Dashboard
+
+![Provider](assets/screenshots/provider.png)
+
+### Admin Dashboard
+
+![Admin](assets/screenshots/admin.png)
+
+### Approved Events
+
+![Approved Events](assets/screenshots/approved-events.png)
+## ✨ Future Enhancements
+
+- User authentication
+- Event registration
+- Email notifications
+- Image uploads
+- Search & Filters
+- Dashboard analytics
+- Role-based access control
+
+---
+
+## 👩‍💻 Author
+
+**Dhanya**
+
+Backend Developer | CSE Student
+
+GitHub:
+https://github.com/DHANYA305
+
+
+
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
