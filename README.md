@@ -195,9 +195,7 @@ Displayed to Users
 
 ![Admin](assets/Screenshots/admin.png)
 
-### Approved Events
 
-![Approved Events](assets/Screenshots/approved-events.png)
 ## ✨ Future Enhancements
 
 - User authentication
